@@ -1,0 +1,3 @@
+class Courgette < ApplicationRecord
+
+end
