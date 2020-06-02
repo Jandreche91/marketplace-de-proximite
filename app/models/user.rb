@@ -4,4 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :username, :first_name, :last_name, :address, :city_name, :city_postcode, :phone_number, presence: true
+  has_many :courgettes, dependent: :destroy
 end
