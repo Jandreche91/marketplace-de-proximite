@@ -4,8 +4,10 @@
   margin: auto;
 }
 .form {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  right: 150px;
+  bottom: -250px;
+  z-index: 100;
   background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
