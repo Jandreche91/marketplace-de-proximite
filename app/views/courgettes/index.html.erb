@@ -1,5 +1,32 @@
-<h1>Welcome to courgette paradise</h1>
+<br>
+<div class="container" style="text-align: center;">
+  <h2>Discover at our <%= Courgette.count %> amazing courgettes listed here!</h1>
+</div>
 
-<% @courgettes.each do |courgette| %>
-  <li><%= courgette.name %> - <%= courgette.price %></li>
-<%end %>
+<br>
+
+<div class="container">
+
+  <div class="row">
+    <% @courgettes.each do |courgette| %>
+      <div class="col-4">
+        <%= link_to courgette_path(courgette), :action => 'go' do %>
+        <div class="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= courgette.name %></h2>
+              <p><%= courgette.description.truncate_words(4) %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= courgette.price %>€/day</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          </div>
+        </div>
+        <br><br>
+      </div>
+    <%end %>
+    <% end %>
+  </div>
+</div>
+
+
