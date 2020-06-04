@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 2020_06_04_172849) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.bigint "users_id", null: false
-    t.bigint "courgettes_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "courgette_id", null: false
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["courgettes_id"], name: "index_bookings_on_courgettes_id"
-    t.index ["users_id"], name: "index_bookings_on_users_id"
+    t.index ["courgette_id"], name: "index_bookings_on_courgette_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "courgettes", force: :cascade do |t|
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_172849) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "courgettes", column: "courgettes_id"
-  add_foreign_key "bookings", "users", column: "users_id"
+  add_foreign_key "bookings", "courgettes"
+  add_foreign_key "bookings", "users"
   add_foreign_key "courgettes", "users"
 end

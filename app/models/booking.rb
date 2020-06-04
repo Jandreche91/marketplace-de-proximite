@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
-  belongs_to :users
-  belongs_to :courgettes
+  belongs_to :user
+  belongs_to :courgette
+
 end
