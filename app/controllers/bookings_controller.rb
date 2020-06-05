@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :courgette_indentifier, only: [:new]
+  before_action :courgette_indentifier, only: [:new, :create]
 
   def new
     @new_booking = Booking.new
@@ -7,6 +7,11 @@ class BookingsController < ApplicationController
 
   def create
     raise
+    if @new_booking.save
+      redirec_to #seguir aquí
+    else
+      render :new
+    end
 
   end
 

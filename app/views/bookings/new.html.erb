@@ -1,13 +1,26 @@
-a view!
 
 
-<div class="container">
+
+
+<div class="container text-center my-3">
+
+  <h1>Your are booking <%= @courgette.name %></h1>
+  <h2>A courgette from <%= @courgette.user.first_name + ' ' + @courgette.user.last_name %> for the very best of our selection!</h2>
+
+
+</div>
+
+
+
+<div class="card container p-4 mb-3">
+
+  <p>Please select your dates:</p>
 
 <%= simple_form_for [@courgette, @new_booking] do |t| %>
 
 <%= t.input :start_date, as: :string, input_html: {class: "datepicker"} %>
 <%= t.input :end_date,as: :string, input_html: {class: "datepicker"} %>
-<%= t.submit "Book this!", class: "btn btn-primary" %>
+<%= t.submit "Book this courgette!", class: "btn btn-success" %>
 
 
 <% end %>
