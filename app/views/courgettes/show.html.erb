@@ -68,8 +68,8 @@
 
                   <%= simple_form_for [@courgette, @new_booking] do |t| %>
 
-                  <%= t.input :start_date, as: :string, input_html: {class: "datepicker"} %>
-                  <%= t.input :end_date,as: :string, input_html: {class: "datepicker"} %>
+                  <%= t.input :start_date, as: :string, input_html: {class: "datepicker", placeholder: "The start of the adventure... "} %>
+                  <%= t.input :end_date,as: :string, input_html: {class: "datepicker", placeholder: "...and the end 😞"} %>
                   <div class="text-center">
                   <%= t.submit "Book this courgette!", class: "btn btn-outline-success btn-block mt-4" %>
                   </div>
@@ -79,9 +79,29 @@
 
           <div class="col-1"></div>
 
-          <div class="card p-5 col-5">
+          <div class="card p-5 col-5 d-flex  flex-column justify-content-around">
 
-          </div>
+
+                <div class="d-flex justify-content-between">
+                    <h4>Number of days:</h4>
+                    <h4 id="number-of-days">0</h4>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <h4>Price per day:</h4>
+                    <h4 id="price-per-day"><%= @courgette.price %> €</h4>
+                </div>
+
+                 <div class="d-flex justify-content-between mt-1 pt-4 border-top border-success">
+                    <h4><strong>Total price</strong></h4>
+                    <strong><h4 id="total-price">0 €</h4></strong>
+                </div>
+
+
+
+
+
+        </div>
 
 
       </div>
