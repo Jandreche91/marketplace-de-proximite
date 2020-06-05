@@ -1,1 +1,15 @@
 a view!
+
+
+<div class="container">
+
+<%= simple_form_for [@courgette, @new_booking] do |t| %>
+
+<%= t.input :start_date, as: :string, input_html: {class: "datepicker"} %>
+<%= t.input :end_date,as: :string, input_html: {class: "datepicker"} %>
+<%= t.submit "Book this!", class: "btn btn-primary" %>
+
+
+<% end %>
+
+</div>

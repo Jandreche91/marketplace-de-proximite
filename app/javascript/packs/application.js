@@ -24,6 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import flatpickr from 'flatpickr'
+require("flatpickr/dist/themes/material_green.css");
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -32,3 +34,9 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+flatpickr(".datepicker", {altInput: true,
+enableTime: true});
+
+
+console.log("Application page is loaded in the pages :-) 🚀")
