@@ -7,12 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Courgette.destroy_all
-User.destroy_all
+addresses_array = [["75011","13 Rue Léon Frot"],
+                ["75011", "21 Eue Ternaux"],
+                ["75011" , "12 Eue Trousseau"],
+                ["75020" , "20 Eue de Ménilmontant"],
+                ["75018" , "3 Rue Francoeur"],
+                ["75018" , "51 Rue Marcadet"],
+                ["75011" , "96 Rue Jean-Pierr-Timbaud"],
+                ["75011" , "80 Rue Sedaine"],
+                ["75011" , "24 Rue Basfrol"],
+                ["75018" , "37 Rue Durantin"] ]
 
 
-
-10.times do
+addresses_array.each do |set|
 
   new_user = User.new
   random_name = Faker::FunnyName.unique.two_word_name.split()
@@ -20,9 +27,9 @@ User.destroy_all
   new_user.last_name = random_name[1]
   new_user.password = "123456"
   new_user.username = Faker::Internet.unique.username(specifier:10)
-  new_user.address = "22, rue du chemin Vert"
+  new_user.address = set[1]
   new_user.city_name = "Paris"
-  new_user.city_postcode = "75011"
+  new_user.city_postcode = set[0]
   new_user.phone_number = "+33" +  Faker::PhoneNumber.subscriber_number(length: 9)
   new_user.email = Faker::Internet.unique.email(name: new_user.first_name)
   puts "User #{new_user.id} has been created" if new_user.save
