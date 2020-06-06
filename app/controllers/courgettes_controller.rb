@@ -6,6 +6,7 @@ class CourgettesController < ApplicationController
   end
 
   def show
+    @new_booking = Booking.new
   end
 
   def new

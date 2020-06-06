@@ -42,21 +42,81 @@
           <h5 class="card-title"><%= @courgette.description %></h5>
           <p class="card-text"><%= @courgette.user.address%>, <%= @courgette.user.city_postcode%>, <%= @courgette.user.city_name %> </p>
           <p class="card-text">Only <%= @courgette.price %>€/day</p>
-          <a href="#" class="btn btn-primary">Book it now</a>
         </div>
       </div>
       <br>
         <div class="card-product">
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+          <img class="ml-2" src="https://kitt.lewagon.com/placeholder/users/krokrob" />
           <div class="card-product-infos">
-            <h2><%= @courgette.user.username %></h2>
+            <h2><%= @courgette.user.first_name + " " + @courgette.user.last_name + " (" + @courgette.user.username  + ")"  %></h2>
             <p><%= @courgette.user.phone_number %></p>
             <p><%= @courgette.user.email %></p>
           </div>
         </div>
+      </div>
     </div>
 
-   </div>
+    <div class="row">
+
+    <div class="col-12 card border m-4 p-4">
+      <h2 class="text-center my-3">Book <%= @courgette.name %> for only <%= @courgette.price %>€ a day!</h2>
+
+
+      <div class="d-flex justify-content-center">
+           <div class=" card p-5 col-5">
+             <p>Please select your dates:</p>
+
+                  <%= simple_form_for [@courgette, @new_booking] do |t| %>
+
+                  <%= t.input :start_date, as: :string, input_html: {class: "datepicker", placeholder: "The start of the adventure... "} %>
+                  <%= t.input :end_date,as: :string, input_html: {class: "datepicker", placeholder: "...and the end 😞"} %>
+                  <div class="text-center">
+                  <%= t.submit "Book this courgette!", class: "btn btn-outline-success btn-block mt-4" %>
+                  </div>
+
+                  <% end %>
+          </div>
+
+          <div class="col-1"></div>
+
+          <div class="card p-5 col-5 d-flex  flex-column justify-content-around">
+
+
+                <div class="d-flex justify-content-between">
+                    <h4>Number of days:</h4>
+                    <h4 id="number-of-days">0</h4>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <h4>Price per day:</h4>
+                    <h4 id="price-per-day"><%= @courgette.price %> €</h4>
+                </div>
+
+                 <div class="d-flex justify-content-between mt-1 pt-4 border-top border-success">
+                    <h4><strong>Total price</strong></h4>
+                    <strong><h4 id="total-price">0 €</h4></strong>
+                </div>
+
+
+
+
+
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+
    <br><br><br>
 </div>
 
