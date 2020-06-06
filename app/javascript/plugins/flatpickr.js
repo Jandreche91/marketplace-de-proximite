@@ -7,7 +7,7 @@ flatpickr(".datepicker", {  altInput: true,
 });
 
 
-
+console.log("this page is charging! :)")
 
 
 // validation that the end date must be greater than the start date
@@ -49,7 +49,7 @@ form.addEventListener("change", (event) => {
      } else {
     numberOfDays.innerHTML = differenceInDays
   };
-},
+
 // you transform the text in integer after choping the € sign!
 
   let priceInInteger = pricePerDay.innerText;
@@ -63,15 +63,17 @@ form.addEventListener("change", (event) => {
     totalPrice.innerHTML = "0 €";
   } else {
     totalPrice.innerHTML = `${priceInInteger * differenceInDays}€`;
-  }
-
-
-
-
-
-
+  };
 
 });
+
+};
+
+
+
+
+
+
 
 
 
