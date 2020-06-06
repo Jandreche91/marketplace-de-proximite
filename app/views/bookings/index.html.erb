@@ -23,6 +23,8 @@
   <p> <%= days.to_i %> days </p>
   <p>You own <%= days.to_i * courgette.price %>€ to <%= "#{courgette.user.first_name} #{courgette.user.last_name}" %></p>
 
+  <%= link_to "Cancel this booking", booking_path(booking), method: :delete, data: {confirm: "Are you sure?"}, class: "mb-2" %>
+
 </div>
 
 </div>
