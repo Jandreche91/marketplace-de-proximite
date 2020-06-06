@@ -6,12 +6,20 @@ class BookingsController < ApplicationController
   end
 
   def create
-    raise
-    if @new_booking.save
-      redirec_to #seguir aquí
+    @booking = Booking.new(booking_params)
+    @booking.courgette = @courgette
+    @booking.user = current_user
+
+    if @booking.save
+      redirect_to bookings_path
     else
-      render :new
+      redirect_to courgette_path(@courgette)
     end
+
+  end
+
+  def index
+    @bookings = current_user.bookings
 
   end
 
@@ -20,6 +28,10 @@ class BookingsController < ApplicationController
 
   def courgette_indentifier
     @courgette = Courgette.find(params[:courgette_id])
+  end
+
+  def booking_params
+    params.require(:booking).permit(:start_date, :end_date)
   end
 
 end
