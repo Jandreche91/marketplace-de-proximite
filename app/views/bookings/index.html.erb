@@ -1,0 +1,38 @@
+
+<div class="container">
+
+<h1 class="text-center mt-5">Thank you for trusting our services!</h1>
+<h2 class="text-center">Here is a recap of all the courgettes you have booked!</h2>
+
+
+<% @bookings.each do |booking| %>
+
+<div class="card-product my-4">
+<% courgette = Courgette.find(booking.courgette_id) %>
+
+<%= image_tag "courgettes_images/photo_#{courgette.id}.jpg", class: "ml-2" %>
+
+
+  <div class="ml-5">
+
+  <p></p>
+  <h2><%= courgette.name %></h2>
+  <p><%= courgette.price %>  € per night</p>
+  <p><%=  %></p>
+  <p><% ( days= Date.parse(booking.end_date.to_s) - Date.parse(booking.start_date.to_s)) %></p>
+  <p> <%= days.to_i %> days </p>
+  <p>You own <%= days.to_i * courgette.price %>€ to <%= "#{courgette.user.first_name} #{courgette.user.last_name}" %></p>
+
+</div>
+
+</div>
+
+<% end %>
+
+
+
+<%= link_to "Book some more courgettes!", courgettes_path, class: "btn btn-success btn-block mb-5" %>
+
+</div>
+
+
