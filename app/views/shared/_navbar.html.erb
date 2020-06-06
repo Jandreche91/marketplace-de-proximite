@@ -1,8 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+  <%= image_tag "logo.png" %>
   <% end %>
-<a class="navbar-link left-bar d-none d-sm-none d-md-block text-secondary" href="/documentation">à propos de nous</a>
+  <%= link_to "nos courgettes", courgettes_path, class:"navbar-link left-bar d-none d-sm-none d-md-block text-secondary" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

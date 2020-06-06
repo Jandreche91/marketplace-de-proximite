@@ -7,6 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Courgette.destroy_all
+User.destroy_all
+
+
+
 10.times do
 
   new_user = User.new
