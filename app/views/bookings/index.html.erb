@@ -17,7 +17,7 @@
 
   <p></p>
   <h2><%= courgette.name %></h2>
-  <p><%= courgette.price %>  € per night</p>
+  <p><%= courgette.price %>  € per day</p>
   <p><%=  %></p>
   <p><% ( days= Date.parse(booking.end_date.to_s) - Date.parse(booking.start_date.to_s)) %></p>
   <p> <%= days.to_i %> days </p>
