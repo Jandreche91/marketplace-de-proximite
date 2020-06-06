@@ -3,6 +3,15 @@ class CourgettesController < ApplicationController
 
   def index
     @courgettes = Courgette.all
+
+    @users = User.geocoded # returns flats with coordinates
+
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 
   def show

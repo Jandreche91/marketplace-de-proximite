@@ -16,16 +16,17 @@ let startDate = document.getElementById("booking_start_date");
 let endDate =  document.getElementById("booking_end_date");
 const form = document.getElementById("new_booking");
 
-form.addEventListener("change",(event) => {
+if (form) {
+  form.addEventListener("change",(event) => {
 
-  // console.log(startDate.value > endDate.value);
-  if (startDate.value >= endDate.value && startDate.value != '' && endDate.value != '' ) {
-    alert("End date should be greater than start date")
-     form.reset();
-  };
+    // console.log(startDate.value > endDate.value);
+    if (startDate.value >= endDate.value && startDate.value != '' && endDate.value != '' ) {
+      alert("End date should be greater than start date")
+       form.reset();
+    };
 
-});
-
+  });
+};
 
 
 // change the total price on the #show page
@@ -38,6 +39,7 @@ let totalPrice = document.getElementById("total-price");
 
 // update the total price in real time
 
+if (form) {
 form.addEventListener("change", (event) => {
   let difference = Date.parse(endDate.value) - Date.parse(startDate.value);
   let differenceInDays = (difference / (60*60*24*1000));
@@ -47,7 +49,7 @@ form.addEventListener("change", (event) => {
      } else {
     numberOfDays.innerHTML = differenceInDays
   };
-
+},
 // you transform the text in integer after choping the € sign!
 
   let priceInInteger = pricePerDay.innerText;
