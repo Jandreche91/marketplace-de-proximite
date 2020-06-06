@@ -8,9 +8,9 @@
 
 
 addresses_array = [["75011","13 Rue Léon Frot"],
-                ["75011", "21 Eue Ternaux"],
-                ["75011" , "12 Eue Trousseau"],
-                ["75020" , "20 Eue de Ménilmontant"],
+                ["75011", "21 Rue Ternaux"],
+                ["75011" , "12 Rue Trousseau"],
+                ["75020" , "20 Rue de Ménilmontant"],
                 ["75018" , "3 Rue Francoeur"],
                 ["75018" , "51 Rue Marcadet"],
                 ["75011" , "96 Rue Jean-Pierr-Timbaud"],
