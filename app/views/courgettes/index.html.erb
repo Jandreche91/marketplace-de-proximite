@@ -1,38 +1,47 @@
 <br>
 <div class="container" style="text-align: center;">
-  <h2>Discover our <%= Courgette.count %> amazing courgettes listed so far (it keeps on growing every day!)</h1>
+  <h2>Discover our <%= Courgette.count %> amazing courgettes listed so far</h2>
+  <h3>(it keeps on growing every day!)</h3>
 </div>
 
 <br>
 
 <div class="container">
-
   <div class="row">
-    <% @courgettes.each do |courgette| %>
-      <div class="col-4">
-        <%= link_to courgette_path(courgette), :action => 'go' do %>
-        <div class="card-trip">
-          <%= image_tag "courgettes_images/photo_#{courgette.id}.jpg" %>
-          <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> -->
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= courgette.name %></h2>
-              <p><%= courgette.description.truncate_words(4) %></p>
+
+    <div class="col-6">
+      <% @courgettes.each do |courgette| %>
+        <div class="col-6">
+          <%= link_to courgette_path(courgette), :action => 'go' do %>
+          <div class="card-trip">
+            <%= image_tag "courgettes_images/photo_#{courgette.id}.jpg" %>
+            <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> -->
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= courgette.name %></h2>
+                <p><%= courgette.description.truncate_words(4) %></p>
+              </div>
+              <h2 class="card-trip-pricing"><%= courgette.price %>€/day</h2>
+              <%= image_tag "avatar_pics/photo_#{courgette.user.id}.png", class: "card-trip-user avatar-bordered avatar-image" %>
+              <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
             </div>
-            <h2 class="card-trip-pricing"><%= courgette.price %>€/day</h2>
-            <%= image_tag "avatar_pics/photo_#{courgette.user.id}.png", class: "card-trip-user avatar-bordered avatar-image" %>
-            <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
           </div>
+          <br><br>
         </div>
-        <br><br>
-      </div>
-    <%end %>
-    <% end %>
+      <%end %>
+      <% end %>
+    </div>
+
+    <div class="col-6">
+      <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
+
+
   </div>
 </div>
 
 
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
