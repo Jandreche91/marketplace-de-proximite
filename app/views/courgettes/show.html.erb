@@ -1,12 +1,16 @@
 <br>
 
 <div class="container">
-  <%= link_to "< back to listing", courgettes_path %>
+  <%= link_to "< back to listing", courgettes_path, class: "btn btn-success" %>
     <h2 style="text-align: center;"><%= @courgette.name %></h2>
   <div class="row">
     <div class="col-6">
       <br><br>
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+      <%= image_tag "courgettes_images/photo_#{@courgette.id}.jpg", class: "d-block w-100" %>
+
+
+          <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -14,7 +18,8 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="d-block w-100" alt="...">
+
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="" alt="...">
               </div>
               <div class="carousel-item">
                 <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="d-block w-100" alt="...">
@@ -31,7 +36,7 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
-          </div>
+          </div> -->
     </div>
 
     <div class="col-6">
@@ -46,7 +51,8 @@
       </div>
       <br>
         <div class="card-product">
-          <img class="ml-2" src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+          <%= image_tag "avatar_pics/photo_#{@courgette.user.id}.png"%>
+          <!-- <img class="ml-2" src="https://kitt.lewagon.com/placeholder/users/krokrob" /> -->
           <div class="card-product-infos">
             <h2><%= @courgette.user.first_name + " " + @courgette.user.last_name + " (" + @courgette.user.username  + ")"  %></h2>
             <p><%= @courgette.user.phone_number %></p>
