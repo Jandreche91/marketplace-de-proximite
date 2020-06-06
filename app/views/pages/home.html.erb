@@ -9,6 +9,33 @@
   </div>
 </div>
 
+<br>
+
+<div class="container">
+
+  <div class="row">
+    <% @courgettes.each do |courgette| %>
+      <div class="col-4">
+        <%= link_to courgette_path(courgette), :action => 'go' do %>
+        <div class="card-trip">
+          <%= image_tag "courgettes_images/photo_#{courgette.id}.jpg" %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= courgette.name %></h2>
+              <p><%= courgette.description.truncate_words(4) %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= courgette.price %>€/day</h2>
+            <%= image_tag "avatar_pics/photo_#{courgette.user.id}.png", class: "card-trip-user avatar-bordered avatar-image" %>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    <%end %>
+    <% end %>
+  </div>
+</div>
+
+
 <div class="carousel-form">
 <div class="carousel slide carousel-first" data-ride="carousel" data-interval="3000">
   <div class="carousel-inner text-center">
@@ -24,8 +51,9 @@
     </div>
   </div>
   <div>
-    <!-- <h1> - test voir quoi implémenter ici -</h1> -->
-<div class="login-page">
+
+<!-- Ne pas supprimer à conserver pour la future modale -->
+<!-- <div class="login-page">
   <div class="form">
     <form class="register-form">
       <input type="text" placeholder="name"/>
@@ -41,7 +69,7 @@
       <p class="message">Not registered? <a href="#">Create an account</a></p>
     </form>
   </div>
-</div>
+</div> -->
 
   </div>
 </div>

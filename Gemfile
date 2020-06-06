@@ -34,6 +34,8 @@ gem 'simple_form'
 gem 'devise'
 
 gem 'faker'
+gem 'geocoder'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   gem 'pry-byebug'
