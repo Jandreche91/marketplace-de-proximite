@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @courgettes = Courgette.first(3)
+    @courgettes = Courgette.all.sample(3)
   end
 end

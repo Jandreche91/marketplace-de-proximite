@@ -7,7 +7,9 @@
     <div class="col-6 p-0">
       <br><br>
 
-      <%= image_tag "courgettes_images/photo_#{@courgette.id}.jpg", class: "d-block w-100 big-card-image" %>
+      <%= cl_image_tag @courgette.photo.key, crop: :fill, class: "d-block w-100 big-card-image"%>
+
+
 
 
           <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -45,13 +47,14 @@
         <h5 class="card-header">Description and price</h5>
         <div class="card-body d-flex flex-column justify-content-around">
           <h4 class="card-title"><%= @courgette.description %></h4>
-          <h4 class="card-text">Pick your courgette at <%= @courgette.user.address%>, <%= @courgette.user.city_postcode%>, <%= @courgette.user.city_name %> </h4>
+          <h4 class="card-text">Pick your courgette at <%= @courgette.user.address%></h4>
           <h4 class="card-text"><strong>Only <%= @courgette.price %>€ a day</strong></h4>
         </div>
       </div>
       <br>
         <div class="card-product">
-          <%= image_tag "avatar_pics/photo_#{@courgette.user.id}.png"%>
+          <%= cl_image_tag @courgette.user.photo.key, crop: :fill%>
+
           <!-- <img class="ml-2" src="https://kitt.lewagon.com/placeholder/users/krokrob" /> -->
           <div class="card-product-infos">
             <h2><%= @courgette.user.first_name + " " + @courgette.user.last_name + " (" + @courgette.user.username  + ")"  %></h2>
@@ -125,6 +128,9 @@
 
    <br><br><br>
 </div>
+
+
+
 
 
 

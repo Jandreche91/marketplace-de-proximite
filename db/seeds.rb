@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Courgette.destroy_all
+User.destroy_all
+
+
 
 addresses_array = [["75011","13 Rue Léon Frot"],
                 ["75011", "21 Rue Ternaux"],
@@ -19,7 +23,7 @@ addresses_array = [["75011","13 Rue Léon Frot"],
                 ["75018" , "37 Rue Durantin"] ]
 
 
-addresses_array.each do |set|
+addresses_array.each_with_index  do |set, index|
 
   new_user = User.new
   random_name = Faker::FunnyName.unique.two_word_name.split()
@@ -30,24 +34,29 @@ addresses_array.each do |set|
   new_user.address = "#{set[1]} #{set[0]} Paris France"
   new_user.phone_number = "+33" +  Faker::PhoneNumber.subscriber_number(length: 9)
   new_user.email = Faker::Internet.unique.email(name: new_user.first_name)
+  file = File.open("app/assets/images/avatar_pics/photo_#{index+1}.jpg")
+  new_user.photo.attach(io:file, filename:"photo_#{index+1}", content_type:"image/jpg")
+
+
   puts "User #{new_user.id} has been created" if new_user.save
 end
 
 
 
 list_of_courgettes = ["Atena Polka","Black Beauty", "Crookneck", "Ambassador",
-                      "Blanche de Trieste", "Butterstick", "Floridor", "Genovese Bio",
-                      "Ortolana di Faenza", "Nimba", "Ronde de Nice", "Pepite d'Alger", "Zapallito del Tronco"]
+                      "White of Trieste", "Butterstick", "Floridor", "Genovese",
+                      "Ortolana di Faenza", "Nimba", "Round from Nice", "Alger Nugget", "Zapallito del Tronco"]
 users = User.all
 
 
-list_of_courgettes.each do |cour|
+list_of_courgettes.each_with_index do |cour, index|
   new_item =Courgette.new
   new_item.name = cour
   new_item.description = Faker::Hipster.unique.sentence
-  new_item.price = rand(25..85)
+  new_item.price = rand(15..35)
   new_item.user = users.sample
-
+  file = File.open("app/assets/images/courgettes_images/photo_#{index}.jpg")
+  new_item.photo.attach(io:file, filename:"photo_#{index}", content_type:"image/jpg")
   puts "#{cour} has been saved" if new_item.save
 end
 
