@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       redirect_to bookings_path
+      flash[:alert] = "Booking saved successfully!"
     else
       redirect_to courgette_path(@courgette)
     end
@@ -20,7 +21,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings
-
   end
 
   def destroy
