@@ -1,13 +1,13 @@
 <br>
 
 <div class="container">
-  <%= link_to "< back to listing", courgettes_path, class: "btn btn-success" %>
+  <%= link_to "Back to the list", courgettes_path, class: "btn btn-success" %>
     <h2 style="text-align: center;"><%= @courgette.name %></h2>
   <div class="row">
-    <div class="col-6">
+    <div class="col-6 p-0">
       <br><br>
 
-      <%= image_tag "courgettes_images/photo_#{@courgette.id}.jpg", class: "d-block w-100" %>
+      <%= image_tag "courgettes_images/photo_#{@courgette.id}.jpg", class: "d-block w-100 big-card-image" %>
 
 
           <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -39,14 +39,14 @@
           </div> -->
     </div>
 
-    <div class="col-6">
+    <div class="col-6 d-flex flex-column pl-5 pr-0">
       <br> <br>
-      <div class="card">
+      <div class="card flex-grow-1" style="box-shadow: 0 0 15px rgba(0,0,0,0.2);">
         <h5 class="card-header">Description and price</h5>
-        <div class="card-body">
-          <h5 class="card-title"><%= @courgette.description %></h5>
-          <p class="card-text"><%= @courgette.user.address%>, <%= @courgette.user.city_postcode%>, <%= @courgette.user.city_name %> </p>
-          <p class="card-text">Only <%= @courgette.price %>€/day</p>
+        <div class="card-body d-flex flex-column justify-content-around">
+          <h4 class="card-title"><%= @courgette.description %></h4>
+          <h4 class="card-text">Pick your courgette at <%= @courgette.user.address%>, <%= @courgette.user.city_postcode%>, <%= @courgette.user.city_name %> </h4>
+          <h4 class="card-text"><strong>Only <%= @courgette.price %>€ a day</strong></h4>
         </div>
       </div>
       <br>
@@ -64,7 +64,7 @@
 
     <div class="row">
 
-    <div class="col-12 card border m-4 p-4">
+    <div class="col-12 card border my-4 p-4">
       <h2 class="text-center my-3">Book <%= @courgette.name %> for only <%= @courgette.price %>€ a day!</h2>
 
 

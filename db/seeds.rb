@@ -27,9 +27,7 @@ addresses_array.each do |set|
   new_user.last_name = random_name[1]
   new_user.password = "123456"
   new_user.username = Faker::Internet.unique.username(specifier:10)
-  new_user.address = set[1]
-  new_user.city_name = "Paris"
-  new_user.city_postcode = set[0]
+  new_user.address = "#{set[1]} #{set[0]} Paris France"
   new_user.phone_number = "+33" +  Faker::PhoneNumber.subscriber_number(length: 9)
   new_user.email = Faker::Internet.unique.email(name: new_user.first_name)
   puts "User #{new_user.id} has been created" if new_user.save
