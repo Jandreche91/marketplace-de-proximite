@@ -25,8 +25,78 @@
 
 
 
+<div class="d-flex">
 
-<% if params[:format].nil? == false %>
+  <div class="bookings-list card flex-grow-1 mx-3 p-3 d-flex flex-column align-items-center justify-content-center">
+
+    <% if @bookings.empty? %>
+
+
+
+    <h4 class="mb-4">🥒 It seems that you haven't booked any courgette yet 🥒</h4>
+    <%= link_to "Browse and book!", courgettes_path, class: "btn btn-success"%>
+
+
+
+
+
+
+
+    <% end %>
+
+
+
+  </div>
+
+
+  <div class="card current-user-card p-4 text-center d-flex align-items-center flex-column">
+
+    <h3>My details</h3>
+
+    <%= cl_image_tag current_user.photo.key, class: "card-user-avatar" %>
+
+    <h4><%= "#{current_user.first_name} #{current_user.last_name}"  %></h4>
+    <p>(<strong><%= current_user.username %></strong>)</p>
+
+    <%= link_to "Edit your profile", edit_user_registration_path %>
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+<!-- LIMITE DE LA NOUVELLE ET DE LA VIEILLE VERSION -->
+
+
+<% unless params[:format].nil? %>
+
+
 <div class="card">
   <h2>This is your last booking:</h2>
   <% last_booking = Booking.find(params[:format]) %>
@@ -63,7 +133,7 @@
 
 
 
-<%= link_to "Book some more courgettes!", courgettes_path, class: "btn btn-success btn-block mb-5" %>
+<%= link_to "Book some more, always more!", courgettes_path, class: "btn btn-success btn-block my-5 mx-3" %>
 
 </div>
 
