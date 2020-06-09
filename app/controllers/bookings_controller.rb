@@ -11,8 +11,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to bookings_path
-      flash[:alert] = "Booking saved successfully!"
+      redirect_to bookings_path(@booking)
+      flash[:notice] = "🎊🎊🎊 Yay! Courgette booking successfully created! 🎊🎊🎊"
     else
       redirect_to courgette_path(@courgette)
     end
@@ -20,6 +20,7 @@ class BookingsController < ApplicationController
   end
 
   def index
+    # raise
     @bookings = current_user.bookings
   end
 
