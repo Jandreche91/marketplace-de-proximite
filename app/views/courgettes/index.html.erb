@@ -1,39 +1,36 @@
-<br>
+<br><br>
 <div class="container" style="text-align: center;">
-  <h2>Discover our <%= Courgette.count %> amazing courgettes listed so far (it keeps on growing every day!)</h1>
+  <h3>&#129362; Discover our <%= Courgette.count %> amazing courgettes listed so far &#129362;</h3>
+  <p> It keeps growing every day &#128512;!</p>
 </div>
-
 <br>
 
-<div class="container">
+<div class="content">
 
-  <div class="row">
-    <% @courgettes.each do |courgette| %>
-      <div class="col-4">
-        <%= link_to courgette_path(courgette), :action => 'go' do %>
-        <div class="card-trip">
-          <%= cl_image_tag courgette.photo.key, crop: :fill %>
-          <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> -->
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= courgette.name %></h2>
-              <p><%= courgette.description.truncate_words(4) %></p>
+  <div class="main-container">
+    <div class="cards">
+      <% @courgettes.each do |courgette| %>
+        <%= link_to courgette_path(courgette), class: "index-link", :action => 'go' do %>
+          <div class="card-trip">
+            <%= cl_image_tag courgette.photo.key, crop: :fill %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= courgette.name %></h2>
+                <p><%= courgette.description.truncate_words(4) %></p>
+              </div>
+              <h2 class="card-trip-pricing"><%= courgette.price %>€/day</h2>
+              <%= cl_image_tag courgette.user.photo.key, crop: :thumb, gravity: :face, class: "card-trip-user avatar-bordered avatar-image"%>
             </div>
-            <h2 class="card-trip-pricing"><%= courgette.price %>€/day</h2>
-            <%= cl_image_tag courgette.user.photo.key, crop: :thumb, gravity: :face, class: "card-trip-user avatar-bordered avatar-image"%>
-            <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
           </div>
-        </div>
-        <br><br>
+        <% end %>
+      <% end %>
+    </div>
+      <div id="map"
+         style="width: 100%; height: 600px;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-    <%end %>
-    <% end %>
+
   </div>
 </div>
 
-<div class="container">
-  <div id="map"
-       style="width: 100%; height: 600px;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-</div>
