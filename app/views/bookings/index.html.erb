@@ -9,8 +9,7 @@
 
 <div class="card-product my-4">
 <% courgette = Courgette.find(booking.courgette_id) %>
-
-<%= image_tag "courgettes_images/photo_#{courgette.id}.jpg", class: "ml-2" %>
+<%= cl_image_tag courgette.photo.key, crop: :fill, class: "ml-2" %>
 
 
   <div class="ml-5">
