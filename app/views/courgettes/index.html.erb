@@ -10,7 +10,7 @@
   <div class="main-container">
     <div class="cards">
       <% @courgettes.each do |courgette| %>
-        <%= link_to courgette_path(courgette), :action => 'go' do %>
+        <%= link_to courgette_path(courgette), class: "index-link", :action => 'go' do %>
           <div class="card-trip">
             <%= cl_image_tag courgette.photo.key, crop: :fill %>
             <div class="card-trip-infos">

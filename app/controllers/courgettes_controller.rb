@@ -9,7 +9,9 @@ class CourgettesController < ApplicationController
     @markers = @users.map do |user|
       {
         lat: user.latitude,
-        lng: user.longitude
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user }),
+        # image_url: helpers.asset_url(cl_image_tag user.photo.key),
       }
     end
   end
