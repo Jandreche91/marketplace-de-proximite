@@ -2,7 +2,11 @@ class CourgettesController < ApplicationController
   before_action :set_courgette, only: [:show, :edit, :update, :destroy]
 
   def index
-    @courgettes = Courgette.all
+    if params[:query].present?
+      @courgettes = Courgette.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @courgettes = Courgette.all
+    end
 
     @users = User.geocoded # returns flats with coordinates
 
