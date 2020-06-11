@@ -22,6 +22,9 @@ class BookingsController < ApplicationController
   def index
     # raise
     @bookings = current_user.bookings
+    @current_bookings = @bookings.select {|booking| booking.end_date >= Date.today }
+    @past_bookings = @bookings.select {|booking| booking.end_date < Date.today }
+
   end
 
   def destroy
