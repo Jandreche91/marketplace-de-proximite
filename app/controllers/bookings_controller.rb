@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    # raise
     @booking = Booking.new(booking_params)
     @booking.courgette = @courgette
     @booking.user = current_user
