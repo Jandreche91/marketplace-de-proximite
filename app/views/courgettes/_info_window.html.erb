@@ -1,2 +1,6 @@
-<h4><%= user.first_name %> <%= user.last_name %></h4>
-<p><%= user.address %></p>
+<% @courgettes.each do |courgette| %>
+<p><%= courgette.name %></p>
+<p><%= courgette.user.address %></p>
+<% end  %>
+<!-- <h4><%= user.first_name %> <%= user.last_name %></h4>
+<p><%= user.address %></p> -->
