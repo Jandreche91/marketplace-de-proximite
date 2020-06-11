@@ -1,14 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
+
     <%= image_tag "logo.png", id: "logo" %>
+
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
+
       <li class="nav-item">
         <%= link_to "Home", root_path, class: "nav-link mx-2" %>
       </li>
@@ -25,9 +30,9 @@
       <% end %>
 
 
-        <% if !user_signed_in? %>
+      <% if !user_signed_in? %>
       <li class="nav-item">
-          <%= link_to "Log in", new_user_session_path, class: "nav-link mx-2" %>
+        <%= link_to "Log in", new_user_session_path, class: "nav-link mx-2" %>
       </li>
 
       <% else %>
@@ -45,18 +50,7 @@
 
         <% end %>
 
-
-
-
-
-
       </li>
-
-
-
-
-
-
 
     </ul>
   </div>

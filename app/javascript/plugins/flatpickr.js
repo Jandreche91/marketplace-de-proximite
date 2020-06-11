@@ -1,32 +1,34 @@
-import flatpickr from 'flatpickr'
+import flatpickr from 'flatpickr';
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 require("flatpickr/dist/themes/material_green.css");
 
-flatpickr(".datepicker", {  altInput: true,
-                            enableTime: false,
-                            minDate: "today"
+flatpickr("#start_date", {
+  minDate: "today",
+  altInput: true,
+  "plugins": [new rangePlugin({ input: "#end_date"})]
 });
 
 
-console.log("this page is charging! :)")
+// console.log("this page is charging! :)")
 
 
 // validation that the end date must be greater than the start date
 
-let startDate = document.getElementById("booking_start_date");
-let endDate =  document.getElementById("booking_end_date");
+let startDate = document.getElementById("start_date");
+let endDate =  document.getElementById("end_date");
 const form = document.getElementById("new_booking");
 
-if (form) {
-  form.addEventListener("change",(event) => {
+// if (form) {
+//   form.addEventListener("change",(event) => {
 
-    // console.log(startDate.value > endDate.value);
-    if (startDate.value >= endDate.value && startDate.value != '' && endDate.value != '' ) {
-      alert("End date should be greater than start date")
-       form.reset();
-    };
+//     // console.log(startDate.value > endDate.value);
+//     if (startDate.value >= endDate.value && startDate.value != '' && endDate.value != '' ) {
+//       alert("End date should be greater than start date")
+//        form.reset();
+//     };
 
-  });
-};
+//   });
+// };
 
 
 // change the total price on the #show page
@@ -41,8 +43,8 @@ let totalPrice = document.getElementById("total-price");
 
 if (form) {
 form.addEventListener("change", (event) => {
-  let difference = Date.parse(endDate.value) - Date.parse(startDate.value);
-  let differenceInDays = (difference / (60*60*24*1000));
+  let difference = Date.parse(endDate.value) - Date.parse(startDate.value.split(" ")[0]);
+  let differenceInDays = Math.round(difference / (60*60*24*1000));
 
   if (startDate.value === '' || endDate.value === '') {
     numberOfDays.innerHTML = 0

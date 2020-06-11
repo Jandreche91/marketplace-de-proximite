@@ -77,8 +77,8 @@
 
                   <%= simple_form_for [@courgette, @new_booking] do |t| %>
 
-                  <%= t.input :start_date, as: :string, input_html: {class: "datepicker", placeholder: "The start of the adventure... "} %>
-                  <%= t.input :end_date,as: :string, input_html: {class: "datepicker", placeholder: "...and the end 😞"} %>
+                  <%= t.input :start_date, as: :string, input_html: { id: "start_date" , placeholder: "The start of the adventure... "} %>
+                  <%= t.input :end_date,as: :string, input_html: { id: "end_date", placeholder: "...and the end 😞"} %>
                   <div class="text-center">
                   <%= t.submit "Book this courgette!", class: "btn btn-outline-success btn-block mt-4" %>
                   </div>

@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    # raise
     @booking = Booking.new(booking_params)
     @booking.courgette = @courgette
     @booking.user = current_user
@@ -22,6 +23,9 @@ class BookingsController < ApplicationController
   def index
     # raise
     @bookings = current_user.bookings
+    @current_bookings = @bookings.select {|booking| booking.end_date >= Date.today }
+    @past_bookings = @bookings.select {|booking| booking.end_date < Date.today }
+
   end
 
   def destroy
