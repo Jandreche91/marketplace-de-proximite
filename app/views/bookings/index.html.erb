@@ -72,7 +72,15 @@
             <h2 class="border-bottom border-success mr-3 p-1 mb-3">All your <span style="color:#1EDD88;">current</span> bookings:</h2>
 
 
-                <% @current_bookings.each do |booking| %>
+            <% if @current_bookings.empty? %>
+
+                   <div class="bookings-list card flex-grow-1 mr-3 p-3 d-flex flex-column  align-items-center justify-content-center">
+                      <h4 class="mb-4">🥒 It seems that you haven't booked in a while! 🥒</h4>
+                      <%= link_to "Browse and book!", courgettes_path, class: "btn btn-success"%>
+                  </div>
+
+              <% else %>
+                <% @current_bookings.reverse.each do |booking| %>
 
                         <div class="card-product mb-3 mr-3">
                         <% courgette = Courgette.find(booking.courgette_id) %>
@@ -97,6 +105,8 @@
 
                         </div>
 
+                    <% end %>
+
                 <% end %>
 
 
@@ -106,6 +116,17 @@
         <div class="d-flex flex-column">
 
             <h2 class="border-bottom border-success mr-3 p-1 my-3">Your <span style="color:#1EDD88;">past</span> bookings:</h2>
+
+
+            <% if @past_bookings.empty? %>
+
+                   <div class="bookings-list card flex-grow-1 mr-3 p-3 d-flex flex-column  align-items-center justify-content-center">
+                      <h4 class="mb-4">🥒 It seems you're pretty new here! 🥒</h4>
+                    </div>
+
+
+            <% else %>
+
 
 
                 <% @past_bookings.each do |booking| %>
@@ -129,6 +150,8 @@
                             </div>
 
                         </div>
+
+                  <% end %>
 
                 <% end %>
 
