@@ -10,6 +10,7 @@ class CourgettesController < ApplicationController
 
     @users = User.geocoded # returns flats with coordinates
 
+    @users = @users.select{|user| user.courgettes.count > 0}
     @markers = @users.map do |user|
       {
         lat: user.latitude,
