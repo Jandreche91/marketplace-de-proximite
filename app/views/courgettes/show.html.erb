@@ -1,4 +1,31 @@
-<br>
+
+
+ <div class="banner banner-show pl-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @courgette.photo.key %>')">
+    <h1><%= @courgette.name %></h1>
+    <h2>A good choice for sure, and for only <%=  @courgette.price%>€ a day! </h2>
+ </div>
+
+<div class="container">
+
+  <div class="card text-center my-3 py-2">
+    <h4>When our users think of <%=@courgette.name%>, they think about</h4>
+    <h5><%= @courgette.description %></h5>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="container">
   <%= link_to "Back to the list", courgettes_path, class: "btn btn-success" %>
