@@ -7,12 +7,12 @@
 
 <div class="container">
 
-  <div class="card text-center my-3 py-2">
+  <div class="card text-center my-3 py-2 shadow p-1 border-0 mx-1">
     <h4>When our users think of <span style="color:#1EDD88;"><%=@courgette.name%></span>, they think about</h4>
     <h5><%= @courgette.description %></h5>
   </div>
 
-   <div class="card-product justify-content-center">
+   <div class="card-product justify-content-center shadow p-1 border-0 mx-1">
           <%= cl_image_tag @courgette.user.photo.key, crop: :fill, class: "ml-2"%>
 
           <!-- <img class="ml-2" src="https://kitt.lewagon.com/placeholder/users/krokrob" /> -->
@@ -32,9 +32,9 @@
 <div class="container">
 
 
-    <div class="row mx-2">
+    <div class="row mx-1">
 
-    <div class="col-12 card border my-3 p-4">
+    <div class="col-12 card border my-3 p-4 shadow p-1 border-0">
       <h2 class="text-center my-3">Book <%= @courgette.name %> for only <%= @courgette.price %>€ a day!</h2>
 
 
