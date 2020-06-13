@@ -8,7 +8,7 @@
 <div class="container">
 
   <div class="card text-center my-3 py-2 shadow p-1 border-0 mx-1">
-    <h4>When our users think of <span style="color:#1EDD88;"><%=@courgette.name%></span>, they think about</h4>
+    <h3>When our users think of <span style="color:#1EDD88;"><%=@courgette.name%></span>, they think about</h3>
     <h5><%= @courgette.description %></h5>
   </div>
 
@@ -79,31 +79,58 @@
     </div>
 </div>
 
-    <%= link_to "Back to the list", courgettes_path, class: "btn btn-success mx-2 my-4 btn-block" %>
+
+    <% if @courgette.reviews.empty? %>
+
+    <div class= "mx-1">
+
+    <h3>No reviews for <span style="color:#1EDD88;"><%= @courgette.name %> </span> yet!</h3>
+
+    Rent this courgette and be the 1st to leave a review!
+
+    </div>
+
+    <% else %>
+
+    <div class="mx-1">
+
+      <h3>Our users are talking about <span style="color:#1EDD88;"><%= @courgette.name %></span>! </h3>
 
 
+      <% @courgette.reviews.each do |review| %>
 
-      <h3>Reviews</h3>
-      <% if @courgette.reviews.empty? %>
-        <p>No reviews yet on this courgette!</p>
-      <% else %>
-        <% @courgette.reviews.each do |review| %>
-          <div style="background-color: white">
-            <p>Author: <%= review.author %></p>
-            <p>Rating: <%= review.rating %></p>
-            <p>Comment: <%= review.content %></p>
+      <div class="card-product shadow p-1 border-0 mx-1 mt-2">
+        <%  user = User.find(review.author) %>
+          <%= cl_image_tag user.photo.key, crop: :fill, class: "ml-2"%>
+
+          <!-- <img class="ml-2" src="https://kitt.lewagon.com/placeholder/users/krokrob" /> -->
+          <div class="card-product-infos ml-5">
+            <h5>Note: <% review.rating.times do  %>
+              🥒
+              <% end %></h5>
+            <h6><%=  review.content%></h6>
+            <p>by <%= user.username %></p>
+
           </div>
-
-        <%end %>
-      <%end %>
-      <%= simple_form_for([ @courgette, @review ], remote: true) do |f| %>
-        <%= f.input :rating, collection: 0..5 %>
-        <%= f.input :content %>
-        <%= f.submit "Submit review", class: "btn btn-primary" %>
+    </div>
       <% end %>
+
+    <% end %>
+
+
+
+
+    </div>
+
+
+
+
 
 </div>
 
+<div class="container">
+<%= link_to "Back to the list", courgettes_path, class: "btn btn-success mx-2 my-4 btn-block" %>
+</div>
 
 
 
