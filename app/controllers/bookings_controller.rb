@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       redirect_to bookings_path(@booking)
-      flash[:notice] = "🎊🎊🎊 Yay! Courgette booking successfully created! 🎊🎊🎊"
+      flash[:notice] = "🎊🎊🎊 Yay! Your courgette bookings is confirmed! 🎊🎊🎊"
     else
       redirect_to courgette_path(@courgette)
     end
@@ -25,6 +25,7 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
     @current_bookings = @bookings.select {|booking| booking.end_date >= Date.today }
     @past_bookings = @bookings.select {|booking| booking.end_date < Date.today }
+    @review = Review.new
 
   end
 

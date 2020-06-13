@@ -9,9 +9,11 @@ class ReviewsController < ApplicationController
     @review.courgette = @courgette
     @review.author = current_user.id
     if @review.save
-      redirect_to courgette_path(@courgette)
+      redirect_to bookings_path
+      flash[:notice] = "Thank you for your review! ✔✔✔ It has now been published! 📪"
     else
       render :new
+
     end
   end
 

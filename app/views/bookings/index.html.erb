@@ -131,19 +131,51 @@
 
                 <% @past_bookings.each do |booking| %>
 
-                        <div class="card-product mb-3 mr-3">
+                        <div class="card-product mb-3 mr-3 card-product-past">
                         <% courgette = Courgette.find(booking.courgette_id) %>
-                        <%= cl_image_tag courgette.photo.key, crop: :fill, class: "ml-2" %>
+                        <%= link_to (cl_image_tag courgette.photo.key, crop: :fill, class: "ml-2"), courgette_path(courgette.id) %>
 
 
-                            <div class="ml-5 my-3 flex-grow-1">
+                            <div class="ml-5 my-3 flex-grow-1 p-3">
 
-                                  <h2><%= courgette.name %></h2>
+                                  <h2 class="mt-2"><%= courgette.name %></h2>
 
                                   <p><% ( days= Date.parse(booking.end_date.to_s) - Date.parse(booking.start_date.to_s)) %></p>
                                   <p> <%= days.to_i %> <%= days.to_i == 1 ? "day" : "days" %></p>
                                   <p>From <strong><%= booking.start_date.strftime("%d %B %Y") %></strong> to <strong><%= booking.end_date.strftime("%d %B %Y")%></strong> (<%= courgette.price %>  € per day)</p>
                                   <p>You paid <%= days.to_i * courgette.price %>€ to <%= "#{courgette.user.first_name} #{courgette.user.last_name}" %></p>
+
+                                  <br>
+
+                                  <% if courgette.reviews.where(author: current_user.id).empty? %>
+
+
+
+                                  <h6>Leave a review!</h6>
+
+                                 <%= simple_form_for [courgette, @review] do |f| %>
+
+                                  <%= f.input :rating, collection: (1..5).to_a, as: :radio_buttons, wrapper: :vertical_collection_inline, label: "Your note" %>
+                                  <%= f.input :content, label: "Your comments:" %>
+                                  <%= f.button :submit, "Submit your review", class: "btn btn-outline-success" %>
+
+
+
+
+
+                                  <% end %>
+
+
+
+                                  <% else %>
+
+
+                                  <p>You already reviewed this courgette</p>
+
+                                  <% end %>
+
+
+
 
 
 
@@ -151,7 +183,9 @@
 
                         </div>
 
-                  <% end %>
+
+
+                <% end %>
 
                 <% end %>
 
