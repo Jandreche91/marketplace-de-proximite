@@ -4,8 +4,11 @@ $extra : calc(#{$pad} * 1.2);
 $color : #f2c822;
 
 
+
 .portfolio-experiment {
-  background: #F4F4F4;
+  background: #18BB73;
+  opacity:0,5;
+
 
   a {
     color: black;
@@ -19,8 +22,8 @@ $color : #f2c822;
 
     .text {
       // padding: 0 0.3em;
-      font-family: proxima-nova, #elsie;
-      transform: translate3d(0,$pad,0);
+      font-family: proxima-nova, elsie;
+      // transform: translate3d(0,$pad,0);
       display: block;
       transition: transform 0.4s cubic-bezier(.2,0,0,1) 0.4s;
     }
@@ -90,10 +93,13 @@ $color : #f2c822;
 
   a:hover,
   a:active {
+    text-decoration: none;
 
     .text {
-      transform: translate3d(0,0,0);
-      transition: transform 0.6s cubic-bezier(.2,0,0,1) 0.4s;
+      position: center;
+      // transform: translate3d(0,0,0);
+      // transition: transform 0.6s cubic-bezier(.2,0,0,1) 0.4s;
+
     }
 
     &:after {
@@ -111,7 +117,7 @@ $color : #f2c822;
       transform: scale3d(1,1,1);
 
       &.-right {
-        transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.2s;
+        // transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.2s;
         transform-origin: bottom;
       }
 
