@@ -1,5 +1,8 @@
-<%user.courgettes.each do |courgette| %>
-<p><%= courgette.name %></p>
-<%end %>
-<p>owner: <%= user.first_name %> <%= user.last_name %></p>
-<p><%= user.address %></p>
+<div>
+  <%user.courgettes.each do |courgette| %>
+  <p style="margin-top: 10px"><strong><%= courgette.name %></strong></p>
+  <%= image_tag courgette.photo, class: "map-picture" %>
+  <p><%= user.address %></p>
+  <%= link_to 'More', courgette_path(courgette), class: "map-button" %>
+  <%end %>
+</div>
