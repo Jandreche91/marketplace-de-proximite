@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Review.destroy_all
 Booking.destroy_all
 Courgette.destroy_all
 User.destroy_all
@@ -46,19 +47,32 @@ end
 list_of_courgettes = ["Atena Polka","Black Beauty", "Crookneck", "Ambassador",
                       "White of Trieste", "Butterstick", "Floridor", "Genovese",
                       "Ortolana di Faenza", "Nimba", "Round from Nice", "Alger Nugget", "Zapallito del Tronco"]
-users = User.all
+
 
 
 list_of_courgettes.each_with_index do |cour, index|
+  users = User.all.to_a
   new_item =Courgette.new
   new_item.name = cour
   new_item.description = ""
   Faker::Hipster.unique.words(number: 5).each {|word| new_item.description << "#" << word << " " }
   new_item.description.strip!
   new_item.price = rand(15..35)
-  new_item.user = users.sample
+  new_item.user = users.slice!(rand(0..users.size - 1))
   file = File.open("app/assets/images/courgettes_images/photo_#{index}.jpg")
   new_item.photo.attach(io:file, filename:"photo_#{index}", content_type:"image/jpg")
   puts "#{cour} has been saved" if new_item.save
+
+  2.times do
+    review = Review.new
+    review.author = users.slice!(rand(0..users.size - 1)).id
+    review.courgette = new_item
+    review.content = Faker::Quote.unique.famous_last_words
+    review.rating = rand(3..5)
+    puts "Review #{review.id} has been saved" if review.save
+  end
+
+
+
 end
 
