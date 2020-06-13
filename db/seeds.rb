@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Booking.destroy_all
 Courgette.destroy_all
 User.destroy_all
 
@@ -17,7 +17,7 @@ addresses_array = [["75011","13 Rue Léon Frot"],
                 ["75020" , "20 Rue de Ménilmontant"],
                 ["75018" , "3 Rue Francoeur"],
                 ["75018" , "51 Rue Marcadet"],
-                ["75011" , "96 Rue Jean-Pierr-Timbaud"],
+                ["75011" , "96 Rue Jean-Pierre-Timbaud"],
                 ["75011" , "80 Rue Sedaine"],
                 ["75011" , "24 Rue Basfrol"],
                 ["75018" , "37 Rue Durantin"] ]
@@ -52,7 +52,9 @@ users = User.all
 list_of_courgettes.each_with_index do |cour, index|
   new_item =Courgette.new
   new_item.name = cour
-  new_item.description = Faker::Hipster.unique.sentence
+  new_item.description = ""
+  Faker::Hipster.unique.words(number: 5).each {|word| new_item.description << "#" << word << " " }
+  new_item.description.strip!
   new_item.price = rand(15..35)
   new_item.user = users.sample
   file = File.open("app/assets/images/courgettes_images/photo_#{index}.jpg")
