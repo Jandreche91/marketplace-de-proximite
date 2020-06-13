@@ -40,20 +40,19 @@
 
   </div>
   <div class=" see more btn container d-flex justify-content-center">
-     <section class="portfolio-experiment">
-  <!--  <%= link_to "See more!", courgettes_path %>-->
-  <a>
-    <span class="text">See more!</span>
-    <span class="line -right"></span>
-    <span class="line -top"></span>
-    <span class="line -left"></span>
-    <span class="line -bottom"></span>
-  </a>
-</section>
-  </div>
+  <section class="portfolio-experiment">
 
+      <%= link_to courgettes_path do %>
+        <span class="text">See more!</span>
+        <span class="line -right"></span>
+        <span class="line -top"></span>
+        <span class="line -left"></span>
+        <span class="line -bottom"></span>
+      <% end %>
+    </section>
+      </div>
+      </div>
   </div>
-</div>
   <div class="container">
     <!-- <div class="row mt">
       <div class="col-lg-4 col-lg-offset-4 centered"> -->
