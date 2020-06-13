@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :courgettes do
     resources :bookings, only: [:new, :create, :edit]
-    resources :reviews, only: [ :new, :create ]
+    resources :reviews, only: [ :new, :create, :destroy ]
   end
 
   resources :bookings, only: [:index, :destroy]
