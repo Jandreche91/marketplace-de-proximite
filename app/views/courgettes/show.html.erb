@@ -107,23 +107,20 @@
                 </div>
 
 
-
-
-
         </div>
-
-
       </div>
-
-
-
-
-
-
     </div>
-
 </div>
 
+
+      <h3>Reviews</h3>
+      <% if @courgette.reviews.empty? %>
+        <p>No reviews yet on this courgette!</p>
+      <% else %>
+        <% @courgette.reviews.each do |review| %>
+          <p><%= review.content %></p>
+        <%end %>
+      <%end %>
 
 
    <br><br><br>

@@ -1,4 +1,8 @@
 class ReviewsController < ApplicationController
+  def new
+    @review = Review.new
+  end
+
   def create
     @courgette = Courgette.find(params[:courgette_id])
     @review = Review.new(review_params)
@@ -6,7 +10,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to courgette_path(@courgette)
     else
-      render "courgettes/show"
+      render :new
     end
   end
 

@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :courgettes do
     resources :bookings, only: [:new, :create, :edit]
-  end
-
-  resources :courgettes do
     resources :reviews, only: [ :new, :create ]
   end
 
