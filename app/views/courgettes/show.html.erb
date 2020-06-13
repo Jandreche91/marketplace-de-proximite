@@ -74,27 +74,33 @@
                 </div>
 
 
-
-
-
         </div>
-
-
       </div>
-
-
-
-
-
-
     </div>
-
 </div>
 
     <%= link_to "Back to the list", courgettes_path, class: "btn btn-success mx-2 my-4 btn-block" %>
 
 
 
+      <h3>Reviews</h3>
+      <% if @courgette.reviews.empty? %>
+        <p>No reviews yet on this courgette!</p>
+      <% else %>
+        <% @courgette.reviews.each do |review| %>
+          <div style="background-color: white">
+            <p>Author: <%= review.author %></p>
+            <p>Rating: <%= review.rating %></p>
+            <p>Comment: <%= review.content %></p>
+          </div>
+
+        <%end %>
+      <%end %>
+      <%= simple_form_for([ @courgette, @review ], remote: true) do |f| %>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.input :content %>
+        <%= f.submit "Submit review", class: "btn btn-primary" %>
+      <% end %>
 
 </div>
 
