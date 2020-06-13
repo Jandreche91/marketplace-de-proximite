@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @courgette = Courgette.find(params[:courgette_id])
     @review = Review.new(review_params)
     @review.courgette = @courgette
-    @review.author = current_user.username
+    @review.author = current_user.id
     if @review.save
       redirect_to courgette_path(@courgette)
     else
